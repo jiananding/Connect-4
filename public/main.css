@@ -1,0 +1,149 @@
+html body {
+    background-image: url(https://hdwallpapers2013.com/wp-content/uploads/2013/03/Sky-Wallpaper.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.play-area {
+    background-color: rgba(195, 224, 229, 0.6);
+    margin: auto;
+    width: 810px;
+    padding: 10px;
+    left: 50%;
+    border: 10px solid #274472;
+    border-radius: 3%;
+}
+
+.grid {
+    margin-left: 2%;
+}
+
+.cell {
+    width: 90px;
+    height: 90px;
+    border: 5px solid #274472;
+    border-radius: 50%;
+    margin: 10px;
+    background-color: #41729F;
+}
+
+.cell.zoom {
+    animation: zoom 0.2s 6 alternate;
+}
+
+@keyframes zoom {
+    from {transform: scale(1.0);}
+    to {transform: scale(1.2);}
+}
+
+.color_theme {
+    position: relative;
+    margin-top: 1%;
+    margin-left: 42%;
+    display: inline-block;
+    font-weight: bold;
+    align-content: center;
+}
+
+.color_theme button {
+    border-radius: 18%;
+    margin: 10px;
+}
+
+.color_theme button:focus {
+    outline:0;
+}
+
+.color_theme #theme_1:hover {
+    background-color: salmon;
+}
+
+.color_theme #theme_2:hover {
+    background-color: #D2FBA4;
+}
+
+.color_theme #theme_3:hover {
+    background-color: skyblue;
+}
+
+#message_block {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
+#msg {
+    font-weight: bold;
+}
+
+#login_message_block {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    color:  white;
+    padding-top: 10px;
+}
+
+#fname {
+    font-size: xx-large;
+    margin-top: 10px;
+    text-align: center;
+    color: blue;
+}
+
+#game_path {
+    display: flex;
+    flex-direction: row;
+    font-size: 125%;
+}
+
+#random_num {
+    width: 29.5%;
+    height: auto;
+    background-color: rgba(73, 73, 73, 0.5);
+    border-radius: 3%;
+    text-align: center;
+    padding: 50px;
+    margin-top: 3%;
+    margin-left: 3%;
+    color:  white;
+}
+
+#nums {
+    font-size: 200%;
+}
+
+#enter_num {
+    width: 29.5%;
+    height: auto;
+    background-color: rgba(73, 73, 73, 0.5);
+    border-radius: 3%;
+    text-align: center;
+    padding: 50px;
+    margin-top: 3%;
+    margin-left: 3%;
+    color:  white;
+}
+
+#queuing {
+    width: 29.5%;
+    height: auto;
+    background-color: rgba(73, 73, 73, 0.5);
+    border-radius: 3%;
+    text-align: center;
+    padding: 50px;
+    margin-top: 3%;
+    margin-left: 3%;
+    color:  white;
+}
+
+#game_end_pop_up_msg {
+    position: absolute;
+    display: none;
+    margin-left: 40%;
+    width: 20%;
+    margin-top: 10%;
+}

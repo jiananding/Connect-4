@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Stephen's Connect-4</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./client.js"></script>
+    
+    <body id="main_body">
+        <img src="" alt="game_end" id="game_end_pop_up_msg">
+
+        <div id="game-page" style="display: none;">
+            <div id="message_block">
+                <h1 id="play_with" style="color: white;"></h1>
+                <p id="msg" style="color: white; display: inline-block;"></p>
+            </div>
+            <div class="play-area">
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell" id="grid_0_0" onclick="select(0)" onmouseenter="mouseEnter(0)" onmouseleave="mouseLeave(0)"></div>
+                        <div class="cell" id="grid_0_1" onclick="select(1)" onmouseenter="mouseEnter(1)" onmouseleave="mouseLeave(1)"></div>
+                        <div class="cell" id="grid_0_2" onclick="select(2)" onmouseenter="mouseEnter(2)" onmouseleave="mouseLeave(2)"></div>
+                        <div class="cell" id="grid_0_3" onclick="select(3)" onmouseenter="mouseEnter(3)" onmouseleave="mouseLeave(3)"></div>
+                        <div class="cell" id="grid_0_4" onclick="select(4)" onmouseenter="mouseEnter(4)" onmouseleave="mouseLeave(4)"></div>
+                        <div class="cell" id="grid_0_5" onclick="select(5)" onmouseenter="mouseEnter(5)" onmouseleave="mouseLeave(5)"></div>
+                        <div class="cell" id="grid_0_6" onclick="select(6)" onmouseenter="mouseEnter(6)" onmouseleave="mouseLeave(6)"></div>
+                    </div>
+        
+                    <div class="row">
+                        <div class="cell" id="grid_1_0" onclick="select(0)" onmouseenter="mouseEnter(0)" onmouseleave="mouseLeave(0)"></div>
+                        <div class="cell" id="grid_1_1" onclick="select(1)" onmouseenter="mouseEnter(1)" onmouseleave="mouseLeave(1)"></div>
+                        <div class="cell" id="grid_1_2" onclick="select(2)" onmouseenter="mouseEnter(2)" onmouseleave="mouseLeave(2)"></div>
+                        <div class="cell" id="grid_1_3" onclick="select(3)" onmouseenter="mouseEnter(3)" onmouseleave="mouseLeave(3)"></div>
+                        <div class="cell" id="grid_1_4" onclick="select(4)" onmouseenter="mouseEnter(4)" onmouseleave="mouseLeave(4)"></div>
+                        <div class="cell" id="grid_1_5" onclick="select(5)" onmouseenter="mouseEnter(5)" onmouseleave="mouseLeave(5)"></div>
+                        <div class="cell" id="grid_1_6" onclick="select(6)" onmouseenter="mouseEnter(6)" onmouseleave="mouseLeave(6)"></div>
+                    </div>
+        
+                    <div class="row">
+                        <div class="cell" id="grid_2_0" onclick="select(0)" onmouseenter="mouseEnter(0)" onmouseleave="mouseLeave(0)"></div>
+                        <div class="cell" id="grid_2_1" onclick="select(1)" onmouseenter="mouseEnter(1)" onmouseleave="mouseLeave(1)"></div>
+                        <div class="cell" id="grid_2_2" onclick="select(2)" onmouseenter="mouseEnter(2)" onmouseleave="mouseLeave(2)"></div>
+                        <div class="cell" id="grid_2_3" onclick="select(3)" onmouseenter="mouseEnter(3)" onmouseleave="mouseLeave(3)"></div>
+                        <div class="cell" id="grid_2_4" onclick="select(4)" onmouseenter="mouseEnter(4)" onmouseleave="mouseLeave(4)"></div>
+                        <div class="cell" id="grid_2_5" onclick="select(5)" onmouseenter="mouseEnter(5)" onmouseleave="mouseLeave(5)"></div>
+                        <div class="cell" id="grid_2_6" onclick="select(6)" onmouseenter="mouseEnter(6)" onmouseleave="mouseLeave(6)"></div>
+                    </div>
+        
+                    <div class="row">
+                        <div class="cell" id="grid_3_0" onclick="select(0)" onmouseenter="mouseEnter(0)" onmouseleave="mouseLeave(0)"></div>
+                        <div class="cell" id="grid_3_1" onclick="select(1)" onmouseenter="mouseEnter(1)" onmouseleave="mouseLeave(1)"></div>
+                        <div class="cell" id="grid_3_2" onclick="select(2)" onmouseenter="mouseEnter(2)" onmouseleave="mouseLeave(2)"></div>
+                        <div class="cell" id="grid_3_3" onclick="select(3)" onmouseenter="mouseEnter(3)" onmouseleave="mouseLeave(3)"></div>
+                        <div class="cell" id="grid_3_4" onclick="select(4)" onmouseenter="mouseEnter(4)" onmouseleave="mouseLeave(4)"></div>
+                        <div class="cell" id="grid_3_5" onclick="select(5)" onmouseenter="mouseEnter(5)" onmouseleave="mouseLeave(5)"></div>
+                        <div class="cell" id="grid_3_6" onclick="select(6)" onmouseenter="mouseEnter(6)" onmouseleave="mouseLeave(6)"></div>
+                    </div>
+        
+                    <div class="row">
+                        <div class="cell" id="grid_4_0" onclick="select(0)" onmouseenter="mouseEnter(0)" onmouseleave="mouseLeave(0)"></div>
+                        <div class="cell" id="grid_4_1" onclick="select(1)" onmouseenter="mouseEnter(1)" onmouseleave="mouseLeave(1)"></div>
+                        <div class="cell" id="grid_4_2" onclick="select(2)" onmouseenter="mouseEnter(2)" onmouseleave="mouseLeave(2)"></div>
+                        <div class="cell" id="grid_4_3" onclick="select(3)" onmouseenter="mouseEnter(3)" onmouseleave="mouseLeave(3)"></div>
+                        <div class="cell" id="grid_4_4" onclick="select(4)" onmouseenter="mouseEnter(4)" onmouseleave="mouseLeave(4)"></div>
+                        <div class="cell" id="grid_4_5" onclick="select(5)" onmouseenter="mouseEnter(5)" onmouseleave="mouseLeave(5)"></div>
+                        <div class="cell" id="grid_4_6" onclick="select(6)" onmouseenter="mouseEnter(6)" onmouseleave="mouseLeave(6)"></div>
+                    </div>
+        
+                    <div class="row">
+                        <div class="cell" id="grid_5_0" onclick="select(0)" onmouseenter="mouseEnter(0)" onmouseleave="mouseLeave(0)"></div>
+                        <div class="cell" id="grid_5_1" onclick="select(1)" onmouseenter="mouseEnter(1)" onmouseleave="mouseLeave(1)"></div>
+                        <div class="cell" id="grid_5_2" onclick="select(2)" onmouseenter="mouseEnter(2)" onmouseleave="mouseLeave(2)"></div>
+                        <div class="cell" id="grid_5_3" onclick="select(3)" onmouseenter="mouseEnter(3)" onmouseleave="mouseLeave(3)"></div>
+                        <div class="cell" id="grid_5_4" onclick="select(4)" onmouseenter="mouseEnter(4)" onmouseleave="mouseLeave(4)"></div>
+                        <div class="cell" id="grid_5_5" onclick="select(5)" onmouseenter="mouseEnter(5)" onmouseleave="mouseLeave(5)"></div>
+                        <div class="cell" id="grid_5_6" onclick="select(6)" onmouseenter="mouseEnter(6)" onmouseleave="mouseLeave(6)"></div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="color_theme" style="color: white;">
+                Color theme:
+                <button id="theme_3" onclick="switch_color(3)">Blue</button>
+                <button id="theme_1" onclick="switch_color(1)">Pink</button>
+                <button id="theme_2" onclick="switch_color(2)">Green</button>
+            </div>
+        </div>
+
+        <div id="login-page">
+            <div id="login_message_block">
+                <h1 id="welcome_msg">We created a name for you:</h1>
+                <form autocomplete="off" id="username">
+                    <input type="text" id="fname" name="fname" size="25" onchange="change_name(fname)">
+                </form>
+                <p style="margin-top: 10px;">You can edit your name</p>
+            </div>
+    
+            <div id="game_path">
+                <div id="random_num">
+                    <p>To <b>start a new game</b>, give this code to your opponent:</p>
+                    <b id="room_id"></b>
+                    <br>
+                    <br>
+                    <p>Tell your opponent to vist this site and enter the code on the right.</p>
+                    <p>The game will start after they enter the code.</p>
+                </div>
+        
+                <div id="enter_num">
+                    <p>To <b>join an existing game</b>,</p>
+                    <p>enter someone's game code:</p>
+                    <form autocomplete="off" id="join_room">
+                        <input type="text" id="join_room_id" name="join_room_id" size="15">
+                    </form>
+                    <b><p style="color: red; margin-top: 10px;" id="join_error"></p></b>
+                </div>
+        
+                <div id="queuing">
+                    <p>To start a <b>random game</b>, click below:</p>
+                    <button id="random_queue">Random</button>
+                    <b><p style="color: red; margin-top: 10px;" id="queue_msg"></p></b>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
